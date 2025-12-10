@@ -1,0 +1,128 @@
+---
+title: Managing Project Documentation
+description: Comprehensive guide on organizing, editing, and collaborating on documentation within Globalinternet.
+---
+
+## Overview
+
+Globalinternet provides a powerful documentation platform where you manage all project docs in one space. Organize pages hierarchically, collaborate with teams, and leverage search tools for efficient access. This guide covers creating pages, workflows, and organization features to streamline your documentation process.
+
+<Columns cols={3}>
+  <Card title="Create Pages" icon="file-plus" href="#creating-pages">
+    Build new docs quickly with Markdown and MDX support.
+  </Card>
+  <Card title="Collaborate" icon="users" href="#collaboration">
+    Review, comment, and merge changes seamlessly.
+  </Card>
+  <Card title="Organize" icon="folder" href="#organization">
+    Use tags, search, and hierarchies for easy navigation.
+  </Card>
+</Columns>
+
+## Creating and Editing Pages
+
+Start by creating pages to structure your documentation. Use the editor for Markdown and MDX syntax, including components like `<Callout>` for highlights.
+
+<Steps>
+  <Step title="Create a New Page" icon="plus">
+    Navigate to your workspace. Click **New Page** and select a parent folder.
+
+    Choose a title like `api-reference.mdx`.
+  </Step>
+  <Step title="Edit Content" icon="edit-3">
+    Use the visual editor or switch to source mode. Add frontmatter:
+
+````markdown
+```yaml
+---
+title: API Reference
+description: Endpoint details and examples.
+---
+```
+````
+  </Step>
+  <Step title="Preview and Publish" icon="eye">
+    Preview changes in real-time. Click **Publish** to make live.
+  </Step>
+</Steps>
+
+Embed code examples directly:
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+async function fetchUser(id) {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+}
+```
+```python
+import requests
+
+def fetch_user(id):
+    response = requests.get(f'/api/users/{id}')
+    return response.json()
+```
+</CodeGroup>
+
+<Callout kind="tip">
+  Always escape special characters like `{variable}` or `<100ms` with backticks in prose to prevent parsing errors.
+</Callout>
+
+## Collaboration Workflows
+
+Invite team members and manage permissions. Workflows support real-time edits and version history.
+
+<Tabs>
+  <Tab title="Editor Role" icon="edit">
+    Edit pages directly. Use inline comments for feedback.
+
+    ```bash
+    git pull origin main
+    # Make changes
+    git commit -m "Update API docs"
+    git push
+    ```
+  </Tab>
+  <Tab title="Reviewer Role" icon="eye">
+    Review drafts. Approve or request changes via `@mentions`.
+
+    Track changes in the history panel.
+  </Tab>
+  <Tab title="Admin Role" icon="shield">
+    Manage permissions and workspaces. Set role-based access.
+
+    | Permission | Editor | Reviewer | Admin |
+    |------------|--------|----------|-------|
+    | Edit      | Yes    | No       | Yes   |
+    | Publish   | No     | Yes      | Yes   |
+    | Delete    | No     | No       | Yes   |
+  </Tab>
+</Tabs>
+
+## Search and Organization Tools
+
+Keep docs organized with tags, hierarchies, and advanced search.
+
+### Tagging and Hierarchies
+Assign tags like `api`, `guide` during creation. Nest pages under folders for structure.
+
+### Search Features
+Use full-text search across all pages. Filter by tags or date.
+
+<ExpandableGroup>
+  <Expandable title="Advanced Search Syntax" default-open="false">
+    Search with operators:
+
+    - `title:API` - Matches page titles
+    - `tag:feature` - Filters by tags
+    - `"exact phrase"` - Phrase search
+
+    Example: `api AND status:published`
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">
+  Regularly audit tags to maintain organization. Aim for `<20` tags per workspace.
+</Callout>
+
+With these tools, you efficiently manage growing documentation. Integrate feedback loops and search to keep content fresh and accessible.

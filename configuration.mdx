@@ -1,0 +1,130 @@
+---
+title: Configuring Your Documentation Space
+description: Customize your documentation environment with configuration options to fit your project's needs.
+---
+
+## Overview
+
+Tailor your Globalinternet Documentation space to match your project's branding and workflow. Adjust space settings, integrate version control, and manage exports efficiently. These configurations ensure seamless collaboration and content management.
+
+<Columns cols={3}>
+  <Card title="Space Settings" icon="settings" href="#space-settings">
+    Customize themes and permissions.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version-control">
+    Connect to Git repositories.
+  </Card>
+  <Card title="Export Options" icon="download" href="#export-import">
+    Export and import content easily.
+  </Card>
+</Columns>
+
+## Space Settings and Themes
+
+Configure your space's appearance and access controls through the settings panel.
+
+### Apply Custom Themes
+
+Select from predefined themes or define your own using CSS variables. Globalinternet uses `#3B82F6` as the default brand color.
+
+<CodeGroup tabs="YAML,JSON">
+```yaml
+theme:
+  primaryColor: "#3B82F6"
+  fontFamily: "Inter, sans-serif"
+  sidebarWidth: 280
+```
+```json
+{
+  "theme": {
+    "primaryColor": "#3B82F6",
+    "fontFamily": "Inter, sans-serif",
+    "sidebarWidth": 280
+  }
+}
+```
+</CodeGroup>
+
+<Callout kind="tip">
+  Test theme changes in preview mode before publishing to avoid disrupting users.
+</Callout>
+
+### Manage Permissions
+
+Set role-based access for editors and viewers.
+
+| Role       | Edit Pages | Manage Themes | Export Content |
+|------------|------------|---------------|----------------|
+| Admin      | Yes       | Yes           | Yes            |
+| Editor     | Yes       | No            | Yes            |
+| Viewer     | No        | No            | No             |
+
+## Version Control Integration
+
+Connect your documentation to GitHub, GitLab, or Bitbucket for versioned edits.
+
+<Steps>
+  <Step title="Connect Repository" icon="git-branch">
+    Navigate to Settings > Integrations and enter your repository URL.
+  </Step>
+  <Step title="Configure Webhook" icon="link">
+    Add a webhook to `https://app.globalinternet.com/webhooks/git/{spaceId}`.
+  </Step>
+  <Step title="Sync Changes" icon="refresh-cw">
+    Push updates to trigger automatic documentation rebuilds.
+  </Step>
+</Steps>
+
+<Expandable title="Advanced Git Config" default-open="false">
+
+Use environment variables for secure authentication.
+
+```bash
+export GITHUB_TOKEN=ghp_yourPersonalAccessToken
+export REPO_URL=https://github.com/yourorg/globalinternet-docs.git
+```
+
+</Expandable>
+
+## Export and Import Options
+
+Export your documentation in multiple formats for backups or migration.
+
+<Tabs>
+  <Tab title="Markdown Export" icon="file-text">
+    Download all pages as a ZIP of MDX files.
+
+    <Request tabs="cURL,JavaScript" show-lines="true">
+    ```bash
+    curl -X POST https://api.globalinternet.com/v1/spaces/{spaceId}/export \
+      -H "Authorization: Bearer {API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{"format": "markdown"}'
+    ```
+    ```javascript
+    const response = await fetch(`https://api.globalinternet.com/v1/spaces/${spaceId}/export`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ format: 'markdown' })
+    });
+    ```
+    </Request>
+  </Tab>
+  <Tab title="PDF Export" icon="file">
+    Generate a static PDF snapshot.
+
+    Use the same endpoint with `"format": "pdf"`.
+  </Tab>
+  <Tab title="Import MDX" icon="upload">
+    Upload a ZIP file via the dashboard or API.
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  Exports include all versions and attachments. Large spaces may take up to 5 minutes.
+</Callout>
+
+These settings optimize your workflow. Review changes in staging before applying to production.

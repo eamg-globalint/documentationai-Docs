@@ -1,0 +1,112 @@
+---
+title: Getting Started with Globalinternet
+description: A step-by-step guide to set up your first documentation space and begin organizing your projects quickly.
+---
+
+## Overview
+
+Get started with Globalinternet in minutes. Follow these steps to create an account, set up your first documentation space, and navigate the interface. This guide uses realistic examples for a project called "MyAPI Docs".
+
+## Quickstart Steps
+
+Follow these sequential steps to launch your documentation space.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+
+  Visit `https://globalinternet.com` and click **Sign Up**.
+
+  Fill out the form with your details:
+
+  | Field       | Example Value              |
+  |-------------|----------------------------|
+  | Email       | developer@company.com     |
+  | Password    | SecurePass123!            |
+  | Team Name   | Acme Corp                 |
+
+  Verify your email and log in.
+
+  </Step>
+
+  <Step title="Create Documentation Space" icon="folder-plus">
+
+  From the dashboard, select **New Space**.
+
+  Configure your space:
+
+  <CodeGroup tabs="Basic,Advanced">
+  ```yaml
+  name: MyAPI Docs
+  description: API reference for our services
+  visibility: public
+  ```
+  ```yaml
+  name: MyAPI Docs
+  description: API reference for our services
+  visibility: private
+  brandColor: "#3B82F6"
+  customDomain: docs.company.com
+  ```
+  </CodeGroup>
+
+  Click **Create Space**.
+
+  </Step>
+
+  <Step title="Basic Navigation and Setup" icon="compass">
+
+  Explore the sidebar:
+
+  <Columns cols={2}>
+    <Card title="Pages" icon="file-text" href="#">
+      Create and edit MDX pages.
+    </Card>
+    <Card title="Settings" icon="settings" href="#">
+      Manage themes and integrations.
+    </Card>
+  </Columns>
+
+  Add your first page by clicking **New Page**.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+
+Save frequently during setup. Auto-save runs every `{30s}`, but manual saves prevent data loss.
+
+</Callout>
+
+## Next Steps
+
+After setup, explore these features to enhance your space.
+
+<Columns cols={3}>
+  <Card title="Add Content" icon="edit-3" href="#">
+    Write MDX pages with components like `<Steps>` and `<Tabs>`.
+  </Card>
+  <Card title="Customize Theme" icon="palette" href="#">
+    Update colors and logos using your brand color `#3B82F6`.
+  </Card>
+  <Card title="Publish" icon="globe" href="#">
+    Deploy to a custom domain for your team.
+  </Card>
+</Columns>
+
+## Advanced Configuration
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+
+If login fails, clear your browser cache or try incognito mode. For space creation errors, check your internet connection and email verification status.
+
+Common error codes:
+
+| Code | Meaning             | Solution                  |
+|------|---------------------|---------------------------|
+| 401  | Unauthorized       | Re-verify email          |
+| 429  | Rate limited       | Wait `{5m}` and retry    |
+| 500  | Server error       | Contact support          |
+
+</Expandable>
+
+Your documentation space is now ready. Start organizing projects and collaborate with your team.

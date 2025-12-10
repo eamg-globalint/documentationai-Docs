@@ -1,0 +1,151 @@
+---
+title: Changelog
+description: Track the latest updates, features, and improvements to Globalinternet Documentation.
+---
+
+## Overview
+
+Globalinternet Documentation releases updates regularly to enhance your documentation experience. You receive new features, performance improvements, and bug fixes that make managing project docs easier. Review this changelog to see what's new and follow upgrade steps to stay current.
+
+<Columns cols={3}>
+  <Card title="Latest Release" icon="zap" href="/docs/releases/latest">
+    Jump to the most recent version details and migration guide.
+  </Card>
+  <Card title="Upgrade Guide" icon="rocket" href="/docs/upgrading">
+    Step-by-step instructions to update your installation.
+  </Card>
+  <Card title="Contribute" icon="github" href="https://github.com/globalinternet/docs" target="_blank">
+    Report issues or submit pull requests for upcoming releases.
+  </Card>
+</Columns>
+
+## Recent Releases
+
+<Update label="2024-10-20" description="v2.0.0" tags={["breaking", "feature"]}>
+  ## Breaking Changes
+
+  - Removed legacy `{legacyConfig}` option; migrate to `{modernConfig}` for all projects.
+
+  ## New Features
+
+  - Added real-time collaboration: Multiple users edit docs simultaneously with live cursors.
+  - Introduced AI-powered search: Use natural language queries to find content instantly.
+  - New version pinning: Lock docs to specific releases for stable deployments.
+
+  ## Improvements
+
+  - Enhanced search relevance by 40% with semantic matching.
+  - Optimized build times by parallelizing MDX processing.
+
+  <CodeGroup tabs="CLI,API">
+  ```bash
+  npx globalinternet-docs@2.0.0 upgrade
+  ```
+  ```javascript
+  const docs = require('globalinternet-docs');
+  await docs.upgrade({ version: '2.0.0' });
+  ```
+  </CodeGroup>
+</Update>
+
+<Update label="2024-10-05" description="v1.5.0" tags={["feature", "bugfix"]}>
+  ## New Features
+
+  - Custom themes support: Apply your brand colors like `#3B82F6` directly in config.
+  - Embed analytics: Track doc views and engagement with integrated charts.
+
+  ## Bug Fixes
+
+  - Fixed Mermaid diagram rendering issues with complex graphs.
+  - Resolved `<ParamField>` escaping errors in API docs.
+  - Patched security vulnerability in external image loading (CVE-2024-5678).
+
+  ## Improvements
+
+  - Reduced bundle size by 25% through tree-shaking optimizations.
+</Update>
+
+<Update label="2024-09-15" description="v1.4.0" tags={["improvement", "bugfix"]}>
+  ## Improvements
+
+  - Faster page loads with lazy-loading for Expandable components.
+  - Better mobile support for Tabs and Steps on touch devices.
+
+  ## Bug Fixes
+
+  - Corrected line numbering in nested code blocks.
+  - Fixed heading hierarchy warnings in validation.
+
+  <Callout kind="tip">
+    Run `npx globalinternet-docs validate` to check your docs before upgrading.
+  </Callout>
+</Update>
+
+## Upgrade Instructions
+
+Follow these steps to upgrade to the latest version.
+
+<Steps>
+  <Step title="Backup Your Project" icon="database">
+    Save your current docs directory:
+
+    ```bash
+    cp -r docs/ docs-backup-$(date +%Y%m%d)
+    ```
+  </Step>
+  <Step title="Install Latest Version" icon="download">
+    Update via your package manager.
+  </Step>
+  <Step title="Run Migration" icon="settings">
+    Execute the upgrade script:
+
+    ```bash
+    npx globalinternet-docs migrate
+    ```
+  </Step>
+  <Step title="Test Changes" icon="check-circle">
+    Preview locally:
+
+    ```bash
+    npx globalinternet-docs dev
+    ```
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="npm" icon="package">
+    ```bash
+    npm install globalinternet-docs@latest
+    ```
+  </Tab>
+  <Tab title="yarn" icon="package">
+    ```bash
+    yarn add globalinternet-docs@latest
+    ```
+  </Tab>
+  <Tab title="pnpm" icon="package">
+    ```bash
+    pnpm add globalinternet-docs@latest
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  Check the [full release notes](https://github.com/globalinternet/docs/releases) on GitHub for detailed commit history and contributor credits.
+</Callout>
+
+<Expandable title="Migration Guide for v2.0.0" default-open="false">
+  If you encounter issues with breaking changes:
+
+  1. Replace `{legacyConfig}` with `{modernConfig: { enabled: true }}`.
+  2. Update all `<ParamField>` components to use double-quoted attributes.
+  3. Test Mermaid diagrams with simple syntax first.
+
+  ```javascript
+  // Before
+  const config = { legacyConfig: true };
+
+  // After
+  const config = { modernConfig: { enabled: true } };
+  ```
+</Expandable>
